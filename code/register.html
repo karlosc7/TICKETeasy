@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Home</title>
+<!--Meta etiquetas-->
+<meta charset="utf-8">
+		<meta charset="utf-8"> 
+		<meta name="keywords" content="ticket, venta de entradas, buy, conciertos, entradas">
+		<meta name="description" content="Proyecto Fin de Ciclo de Carlos del Cerro Tenorio ">
+		<meta name="author" content="Carlos del Cerro Tenorio">
+		<meta name="copyright" content=“copyright karlosc7">
+		<meta name="distribution" content="local">
+<link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+<script type="text/javascript" src="js/jquery-1.4.2.js" ></script>
+<script type="text/javascript" src="js/cufon-yui.js"></script>
+<script type="text/javascript" src="js/cufon-replace.js"></script>
+<script type="text/javascript" src="js/Avenir_900.font.js"></script>
+<script type="text/javascript" src="js/Avenir_300.font.js"></script>
+<script type="text/javascript" src="js/Avenir_500.font.js"></script>
+
+<?php
+$db_host="localhost";
+$db_user="nombre_de_usuario";
+$db_password="contraseña";
+$db_name="nombre_de_base_de_datos";
+$db_table_name="nombre_de_tabla";
+   $db_connection = mysql_connect($db_host, $db_user, $db_password);
+if (!$db_connection) {
+	die('No se ha podido conectar a la base de datos');
+}
+$subs_name = utf8_decode($_POST['nombre']);
+$subs_last = utf8_decode($_POST['apellido']);
+$subs_email = utf8_decode($_POST['email']); 
+$resultado=mysql_query("SELECT * FROM ".$db_table_name." WHERE Email = '".$subs_email."'", $db_connection);
+if (mysql_num_rows($resultado)>0)
+{
+header('Location: Fail.html');
+} else {
+	$insert_value = 'INSERT INTO `' . $db_name . '`.`'.$db_table_name.'` (`Nombre` , `Apellido` , `Email`) VALUES ("' . $subs_name . '", "' . $subs_last . '", "' . $subs_email . '")';
+mysql_select_db($db_name, $db_connection);
+$retry_value = mysql_query($insert_value, $db_connection); 
+if (!$retry_value) {
+   die('Error: ' . mysql_error());
+}	
+header('Location: Success.html');
+}
+mysql_close($db_connection);		
+?>
+
+</head>
+<body id="page1">
+<div class="main">
+	<div class="body1"></div>
+<!-- header -->
+	<header>
+		<div class="wrapper">
+			<h1><a href="index.html" id="logo">TICKETeasy</a></h1>
+			<nav>
+				<ul id="menu">
+					<li id="menu_active"><a href="index.html">Home</a></li>
+					<li><a href="login.html">Login</a></li>
+					<li><a href="register.html">Register</a></li>
+					<li><a href="conciertos.html">Conciertos</a></li>
+					<li><a href="compra.html">Compra</a></li>
+					<li><a href="fin.html">Fin</a></li>
+				</ul>
+			</nav>
+		</div>
+		<div id="banner">
+			<div class="text">
+				<span></span>
+				<a href="#" class="button">Read More</a>
+			</div>
+		</div>
+	</header>
+<!-- / header -->
+<!-- possible content -->
+<div class="group">
+  <form action="registro.php" method="POST">
+  <h2><em>Formulario de Registro</em></h2>  
+     
+      <label for="nombre">Nombre <span><em>(requerido)</em></span></label>
+      <input type="text" name="nombre" class="form-input" required/>   
+      
+      <label for="apellidos">Apellidos <span><em>(requerido)</em></span></label>
+      <input type="text" name="apellido" class="form-input" required/>         
+      
+      <label for="email">Email <span><em>(requerido)</em></span></label>
+      <input type="email" name="email" class="form-input" />
+
+      <label for="contraseña">Contraseña <span><em>(requerido)</em></span></label>
+      <input type="email" name="email" class="form-input" />
+
+      <label for="contraseña2">Repetir contraseña <span><em>(requerido)</em></span></label>
+      <input type="email" name="email" class="form-input" />
+     <center> <input class="form-btn" name="submit" type="submit" value="Registrarme" /></center>
+    </p>
+  </form>
+</div>
+<!-- content end-->
+<!-- footer -->
+<div>
+	<footer>
+		Website template</a> designed by karlos del cerro<br>
+		Copyright</a>  @karlosc7
+	</footer>
+<!-- footer end-->
+</div>
+<script type="text/javascript"> Cufon.now(); </script>
+</body>
+</html>
