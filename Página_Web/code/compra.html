@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Home</title>
+<!--Meta etiquetas-->
+<meta charset="utf-8">
+		<meta charset="utf-8"> 
+		<meta name="keywords" content="ticket, venta de entradas, buy, conciertos, entradas">
+		<meta name="description" content="Proyecto Fin de Ciclo de Carlos del Cerro Tenorio ">
+		<meta name="author" content="Carlos del Cerro Tenorio">
+		<meta name="copyright" content=“copyright karlosc7">
+		<meta name="distribution" content="local">
+<link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+<script type="text/javascript" src="js/jquery-1.4.2.js" ></script>
+<script type="text/javascript" src="js/cufon-yui.js"></script>
+<script type="text/javascript" src="js/cufon-replace.js"></script>
+<script type="text/javascript" src="js/Avenir_900.font.js"></script>
+<script type="text/javascript" src="js/Avenir_300.font.js"></script>
+<script type="text/javascript" src="js/Avenir_500.font.js"></script>
+<script>
+//Función de evaluación
+function evaluar(){
+	var nombre=document.formulario.nombre.value;
+	var edad=document.formulario.edad.value;
+	if(nombre.length==0){
+		alert("El campo nombre no puede estar vacío");
+	}else if(edad.length==0){
+		alert("Escribe una edad");
+	}else if(isNaN(edad))
+	alert("Esta edad no es un número");
+	}else if(edad<=0 || edad>=100){
+	alert("Edad fuera de rango")
+	}else {
+	alert("Te llamas "+nombre+"\ny tienes "+edad+" años.")
+	}
+}	
+</script>
+</head>
+<body id="page1">
+<div class="main">
+	<div class="body1"></div>
+<!-- header -->
+	<header>
+		<div class="wrapper">
+			<h1><a href="index.html" id="logo">Rellena el formulario</a></h1>
+			<nav>
+				<ul id="menu">
+					<li id="menu_active"><a href="index.html">Home</a></li>
+					<li><a href="conciertos.html">Conciertos</a></li>
+					<li><a href="compra.html">Compra</a></li>
+					<li><a href="somos.html">Qui&eacutenes somos</a></li>
+				</ul>
+			</nav>
+		</div>
+		<div id="banner">
+			<div class="text"></br></br></br></br></br></br></br>
+				<form id="formulario" name="formulario" action="fin.html" action="mailto:carlosc7fuen@gmail.com" method="get">
+					<label for="nombre">Nombre: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+					<input type="text" name="nombre" value="Nombre" id="nombre" required>
+					<br/>
+					<label for="apellido">Apellidos: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+					<input type="text" name="apellido" value="Apellidos" id="apellido" required>
+					<br/>
+					<label for="email">Email: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+					<input type="text" name="email" value="Email" id="email" required>
+					<br/>
+					<label for="email">M&eacutetodo de pago: </label>
+					<select name="transporte" id="pago" required>
+						<option></option>
+						<option>Paypal</option>
+						<option>Tarjeta</option>
+					</select>
+					<br>
+					<a href="fin.html"><input type="submit" value="Enviar"></a>
+					<input type="reset" value="Borrar" onClick="document.formulario.nombre.focus();">
+				</form>	
+			</div>
+		</div>
+	</header>
+<!-- / header -->
+<!-- possible content -->
+<!-- content end-->
+<!-- footer -->
+<div>
+	<footer>
+		Website template</a> designed by karlos del cerro<br>
+		Copyright</a>  @karlosc7
+	</footer>
+<!-- footer end-->
+</div>
+<script type="text/javascript"> Cufon.now(); </script>
+</body>
+</html>
