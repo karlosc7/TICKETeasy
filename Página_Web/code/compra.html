@@ -22,19 +22,25 @@
 <script>
 //Función de evaluación
 function evaluar(){
-	var nombre=document.formulario.nombre.value;
-	var edad=document.formulario.edad.value;
-	if(nombre.length==0){
-		alert("El campo nombre no puede estar vacío");
-	}else if(edad.length==0){
-		alert("Escribe una edad");
-	}else if(isNaN(edad))
-	alert("Esta edad no es un número");
-	}else if(edad<=0 || edad>=100){
-	alert("Edad fuera de rango")
-	}else {
-	alert("Te llamas "+nombre+"\ny tienes "+edad+" años.")
-	}
+	var nombre = document.getElementsByName("nombre");	
+if( nombre == null || nombre.length == 0 || /^\s+$/.test(nombre) ) {
+  alert("Introduce correctamente el nombre");
+ }
+ 
+	var apellido = document.getElementsByName("apellido");
+if( apellido == null || apellido.length == 0 || /^\s+$/.test(apellido) ) {
+  alert("Introduce correctamente los apellidos");
+}
+
+	var pago = document.getElementsByName("pago");
+if( indice == null || indice == 0 ) {
+  alert("Elige una de las opciones");
+}
+
+	var email = document.getElementsByName("email");
+if( !(/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)/.test(valor)) ) {
+  alert("Introduce correctamente el correo electrónico");
+}
 }	
 </script>
 </head>
@@ -54,26 +60,28 @@ function evaluar(){
 				</ul>
 			</nav>
 		</div>
-		<div id="banner">
-			<div class="text"></br></br></br></br></br></br></br>
+		
+		<div><h3>El precio de su entrada son 60 &#8364, rellene el formulario para realizar su compra</h3></div>
+		<div id="banner"></br></br></br></br></br></br></br>
+			<div class="text">
 				<form id="formulario" name="formulario" action="fin.html" action="mailto:carlosc7fuen@gmail.com" method="get">
 					<label for="nombre">Nombre: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-					<input type="text" name="nombre" value="Nombre" id="nombre" required>
+					<input type="text" name="nombre" placeholder="Nombre" id="nombre" required>
 					<br/>
 					<label for="apellido">Apellidos: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-					<input type="text" name="apellido" value="Apellidos" id="apellido" required>
+					<input type="text" name="apellido" placeholder="Apellidos" id="apellido" required>
 					<br/>
 					<label for="email">Email: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-					<input type="text" name="email" value="Email" id="email" required>
+					<input type="text" name="email" placeholder="e-mail" id="email" required>
 					<br/>
-					<label for="email">M&eacutetodo de pago: </label>
+					<label for="pago">M&eacutetodo de pago: </label>
 					<select name="transporte" id="pago" required>
-						<option></option>
-						<option>Paypal</option>
-						<option>Tarjeta</option>
+						<option value="">Selecci&oacuten de pago</option>
+						<option value="1">Paypal</option>
+						<option value="2">Tarjeta</option>
 					</select>
-					<br>
-					<a href="fin.html"><input type="submit" value="Enviar"></a>
+					</br>
+					<input type="submit" value="Enviar">
 					<input type="reset" value="Borrar" onClick="document.formulario.nombre.focus();">
 				</form>	
 			</div>
